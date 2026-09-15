@@ -9,7 +9,6 @@ Its private counterpart, `.github-private`, holds the member-only organization l
 
 | Path | Holds | Specified by |
 |---|---|---|
-| `profile/README.md` | The public organization landing page | — |
 | `.github/ISSUE_TEMPLATE/` | Default issue forms | `handbook/project-tracking.md` |
 | `.github/PULL_REQUEST_TEMPLATE.md` | Default PR template | `handbook/project-tracking.md` |
 | `SECURITY.md` | How to report a vulnerability | `handbook/security.md` |
@@ -20,3 +19,8 @@ Its private counterpart, `.github-private`, holds the member-only organization l
 
 Placeholders only. The CI quality gate and branch-protection rulesets are not yet written
 here — see the handbook pages above for what they must enforce.
+
+**`profile/` is deliberately absent.** A `profile/README.md` in this repo becomes the
+organization's public landing page on GitHub. It stays unwritten until there is something
+NetstarGlobal actually wants to say publicly, rather than shipping a placeholder as the
+org's public face. The member-only landing lives in `.github-private`.
