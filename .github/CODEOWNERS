@@ -1,0 +1,10 @@
+# Review routing. Owners are teams, never individuals — a team survives someone
+# changing role. GitHub ignores an unknown owner WITHOUT ERROR, so after editing
+# confirm every team below resolves:
+#     gh api orgs/NetstarGlobal/teams --jq '.[].slug'
+#
+# Architects own review on the current repos. core-engineering holds read here,
+# and a code owner without explicit write access is silently ignored — naming it
+# as owner would fail open rather than route anywhere.
+
+*                       @NetstarGlobal/architects
