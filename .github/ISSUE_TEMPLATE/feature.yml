@@ -1,0 +1,22 @@
+name: Feature
+description: A new capability
+labels: ["type:feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What cannot be done today, and who needs it.
+    validations: { required: true }
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed shape
+      description: What would change. If this chooses a database, vendor, service, or crosses a team boundary, it needs a decision record first — file a Decision instead.
+    validations: { required: true }
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence
+      description: What will be true when this is done, and how it will be demonstrated.
+    validations: { required: true }

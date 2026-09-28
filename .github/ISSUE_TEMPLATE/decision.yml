@@ -1,0 +1,31 @@
+name: Decision
+description: A choice to be made; resolves into a decision record
+labels: ["type:decision", "state:needs-decision"]
+body:
+  - type: input
+    id: question
+    attributes:
+      label: The question, as a question
+      description: One question with an answer. If it needs "and", it is two decisions.
+    validations: { required: true }
+  - type: textarea
+    id: options
+    attributes:
+      label: Options in play
+      description: Each option in one line. The decision record will carry the cost of being wrong per option.
+    validations: { required: true }
+  - type: input
+    id: decider
+    attributes:
+      label: Who decides
+      description: The engineer who runs the affected system (handbook operating-model.md §3).
+    validations: { required: true }
+  - type: input
+    id: consulted
+    attributes:
+      label: Who is consulted
+  - type: input
+    id: due
+    attributes:
+      label: Needed by
+      description: The phase gate or date that waits on this.
