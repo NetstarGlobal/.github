@@ -1,0 +1,29 @@
+# Documents are read by stakeholders, contractors and the docs mirror, so they stay in
+# the professional register (handbook documents.md §4): people appear by role in prose,
+# nothing points at one person's machine, and nothing names an internal host.
+#
+#   jobs:
+#     docs-register:
+#       uses: NetstarGlobal/.github/.github/workflows/docs-register.yml@main
+name: docs-register
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  docs-register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: register
+        run: |
+          set -o pipefail
+          hits=$(grep -rnE --include='*.md' \
+            -e '(^|[^/A-Za-z])~/' -e '/Users/[a-z]' -e '/home/[a-z]' -e "on [A-Z][a-z]+'s (machine|laptop|box)" \
+            README.md docs 2>/dev/null || true)
+          if [ -n "$hits" ]; then
+            echo "$hits"
+            echo "::error::a document points at a personal machine or home directory — cite the repo path, the store, or the document instead"
+            exit 1
+          fi
+          echo "register clean"
