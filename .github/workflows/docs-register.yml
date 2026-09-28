@@ -1,6 +1,8 @@
 # Documents are read by stakeholders, contractors and the docs mirror, so they stay in
 # the professional register (handbook documents.md §4): people appear by role in prose,
 # nothing points at one person's machine, and nothing names an internal host.
+# A tool's own install location (~/.claude/skills, ~/.config) is not a personal path;
+# only ~/<Name> — a Downloads or Development directory — is.
 #
 #   jobs:
 #     docs-register:
@@ -19,7 +21,7 @@ jobs:
         run: |
           set -o pipefail
           hits=$(grep -rnE --include='*.md' \
-            -e '(^|[^/A-Za-z])~/' -e '/Users/[a-z]' -e '/home/[a-z]' -e "on [A-Z][a-z]+'s (machine|laptop|box)" \
+            -e '(^|[^/A-Za-z])~/[A-Za-z]' -e '/Users/[a-z]' -e '/home/[a-z]' -e "on [A-Z][a-z]+'s (machine|laptop|box)" \
             README.md docs 2>/dev/null || true)
           if [ -n "$hits" ]; then
             echo "$hits"
