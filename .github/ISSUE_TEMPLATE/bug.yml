@@ -1,0 +1,27 @@
+name: Bug
+description: Something does not do what it says
+labels: ["type:bug"]
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened
+      description: The observed behaviour, with the command or request that produced it and the output pasted, not paraphrased.
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes:
+      label: What the contract says should happen
+      description: Cite the doc, test, or interface that states the expected behaviour.
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Steps, inputs, and the commit or version. A reproduction a reviewer can run is what turns a report into a fix.
+    validations: { required: true }
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: file:line, package, or endpoint, if known

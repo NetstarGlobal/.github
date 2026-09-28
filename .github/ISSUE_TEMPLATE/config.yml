@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security exposure (privately)
+    url: https://github.com/NetstarGlobal/.github/blob/main/SECURITY.md
+    about: Do not open an issue for a live exposure. SECURITY.md says who to contact and in what order.

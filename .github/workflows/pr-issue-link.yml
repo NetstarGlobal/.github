@@ -1,0 +1,20 @@
+# Every pull request closes at least one issue (handbook project-tracking.md §1).
+#
+#   jobs:
+#     pr-issue-link:
+#       uses: NetstarGlobal/.github/.github/workflows/pr-issue-link.yml@main
+name: pr-issue-link
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  pr-issue-link:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          BODY: ${{ github.event.pull_request.body }}
+        # BODY via env, not inlined, so the PR body cannot inject into the script.
+        run: |
+          echo "$BODY" | grep -Eiq '(clos|fix|resolv)e?[sd]? +#[0-9]+' \
+            || { echo "::error::PR must close an issue — add a 'Closes #N' line to the body"; exit 1; }

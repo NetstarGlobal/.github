@@ -1,17 +1,26 @@
-<!-- Placeholder. See handbook/project-tracking.md -->
-
-## What and why
+## Summary
+<!-- 1–3 sentences: what changed and why. Keep the Closes line — the pr-issue-link check requires it. -->
 
 Closes #
 
-## Merge tier
+## Gate
+- **Named gate**: `<the exact command that proves this change>`
+- **Verdict**: pass | not run (<why>)
+- **Evidence**: <failing before → passing after; for a new test, what it asserts; for a measurement, a table with a column saying what each row measures>
+- **`hack/gate.sh`**: green | not run (<why>)
 
-- [ ] **A** — imported by others, published, or contract-governed → needs non-author approval
-- [ ] **B** — not yet consumed, owning team → self-merge on green CI
-- [ ] **C** — release, credentials/access, or irreversible → owner sign-off required
+## Merge preconditions
+None.
 
-## Checks
+## Review
+- **Tier**: A | B | C (handbook project-tracking.md §3)
+- **Notes**: <behaviour changes, each marked intended or preserved; seams added or removed; costs moved; trade-offs with their numbers, each marked verified or inferred; rejected alternatives>
 
-- [ ] CI green
-- [ ] Linked issue
-- [ ] Decision record, if a choice crossed a team boundary
+## Ledger
+<docs, status, decision records or audit files riding this PR, or "None.">
+
+## Checklist
+- [ ] `hack/gate.sh` green locally (or "not run" stated above with the reason)
+- [ ] Tests added or updated for the change
+- [ ] Docs updated if behaviour changed
+- [ ] Decision record opened or cited, if a choice crossed a team boundary

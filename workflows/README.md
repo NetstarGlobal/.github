@@ -1,5 +1,3 @@
-Placeholder for **reusable** workflows — a shared CI quality gate every repo calls rather
-than copy-pastes.
-
-Per `handbook/repos.md` and `handbook/security.md`, the gate must include a secret scan as a
-required status check from a repo's first commit. Not yet written.
+Reusable workflows live in [`.github/workflows/`](../.github/workflows/) — GitHub only resolves
+a `uses:` reference against that path. This directory is kept so an old link still lands
+somewhere; nothing else belongs here.
