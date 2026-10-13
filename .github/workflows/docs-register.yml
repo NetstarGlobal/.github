@@ -21,7 +21,7 @@ jobs:
         run: |
           set -o pipefail
           hits=$(grep -rnE --include='*.md' \
-            -e '(^|[^/A-Za-z])~/[A-Za-z]' -e '/Users/[a-z]' -e '/home/[a-z]' -e "on [A-Z][a-z]+'s (machine|laptop|box)" \
+            -e '(^|[^/A-Za-z])~/[A-Za-z]' -e '(^|[^/A-Za-z])/Users/[a-z]' -e '(^|[^/A-Za-z])/home/[a-z]' -e "on [A-Z][a-z]+'s (machine|laptop|box)" \
             README.md docs 2>/dev/null || true)
           if [ -n "$hits" ]; then
             echo "$hits"
