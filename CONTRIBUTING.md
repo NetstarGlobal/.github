@@ -8,8 +8,10 @@ The rules behind it — issue-first, the merge tiers, review turnaround — are 
 ## 1. Start from an issue
 
 Every unit of work is an issue before it is a branch, and every pull request closes at least
-one (`Closes #N` in the body — the `pr-issue-link` check refuses a PR without it). Use the
-issue forms; they carry the right labels.
+one (`Closes #N` in the body — the `pr-issue-link` check refuses a PR without it). When the
+issue lives in another repository, such as a program repo's board, write `Closes owner/repo#N`
+or the issue's full URL; GitHub closes the issue on merge only in those forms. Use the issue
+forms; they carry the right labels.
 
 ## 2. Branch
 

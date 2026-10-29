@@ -16,5 +16,6 @@ jobs:
           BODY: ${{ github.event.pull_request.body }}
         # BODY via env, not inlined, so the PR body cannot inject into the script.
         run: |
-          echo "$BODY" | grep -Eiq '(clos|fix|resolv)e?[sd]? +#[0-9]+' \
-            || { echo "::error::PR must close an issue — add a 'Closes #N' line to the body"; exit 1; }
+          # A closing keyword, then #N, owner/repo#N, an issues URL, or a link whose text is one of those.
+          echo "$BODY" | grep -Eiq '(clos|fix|resolv)e?[sd]?:? +\[?(#[0-9]+|[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+#[0-9]+|https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/issues/[0-9]+)' \
+            || { echo "::error::PR must close an issue — add a 'Closes #N' or 'Closes owner/repo#N' line to the body"; exit 1; }
